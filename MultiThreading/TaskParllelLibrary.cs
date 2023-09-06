@@ -2,7 +2,7 @@
 
 namespace MultiThreading
 {
-    internal class TaskParllelLibrary
+    public class TaskParllelLibrary
     {
         public void TaskParllelOperation()
         {
@@ -26,19 +26,18 @@ namespace MultiThreading
                 Console.WriteLine("third task");
                 GetLongestWordsWithLength(words);
                 Console.WriteLine("----3 task----");
-
-
             }
             );
         }
 
-        private string[] CreateWordArray(string v)
+        
+
+        public string[] CreateWordArray(string v)
         {
             string data  = new WebClient().DownloadString(v);
             return data.Split(new char[] { ' ', ',', '-', '_', '/', '.' },StringSplitOptions.RemoveEmptyEntries);
         }
-
-        private void GetFirstWords(string[] words)
+        public void GetFirstWords(string[] words)
         {
             var result = words.Take(10);
             foreach (var item in result)
@@ -46,14 +45,12 @@ namespace MultiThreading
                 Console.WriteLine(item);
             }
         }
-
-        private void GetLongestWords(string[] words)
+        public void GetLongestWords(string[] words)
         {
             Array.Sort(words);
             Console.WriteLine(words[words.Length-1]);
         }
-
-        private void GetLongestWordsWithLength(string[] words)
+        public void GetLongestWordsWithLength(string[] words)
         {
             var result = words.Where(x=> x.Length > 6).Take(10).ToList();
             foreach (var item in result)
